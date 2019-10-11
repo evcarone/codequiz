@@ -6,43 +6,108 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <link rel="stylesheet" href="./css/style.css">
   <title>Code Quiz</title>
 </head>
 
 <body class="body">
-  
+
   <h1 class="h1">Code Quiz</h1>
   <div class="container">
-      <div class="row">
-        <div class="col-sm-12">
-          <h3 class="text-center">Start a Quiz</h3>
-          <hr/>
-          <div class="row">
-            <div class="col-10 col-sm-8 mx-auto w-50 p-3 text-gray text-center border" id="displayPassword">
-                your quiz question and results
-            </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <h3 class="text-center">Start a Quiz</h3>
+        <hr />
+        <div class="row">
+          <div class="col-10 col-sm-8 mx-auto w-50 p-3 text-gray text-center border" id="displayQuestion">
+            your quiz question and results
           </div>
         </div>
       </div>
-      <div class="row">
-          <div class="col-sm-12">
-            <hr/>
-            <div class="row">
-              <div class="col-8 col-sm-6">
-                <button  class="btn btn-danger btn-lg rounded" id="generatePassword" style="width: 50%">Generate</button>
-              </div>
-              <div class="col-8 col-sm-6">
-                  <button class="btn btn-secondary disabled btn-lg rounded" id="copyPassword" style="width: 50%">Copy</button>
-              </div>
-            </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <hr />
+        <div class="row">
+          <div class="col-8 col-sm-6">
+            <button class="btn btn-danger btn-lg rounded" id="startQuiz" style="width: 50%">Start Quiz</button>
+          </div>
+          <div class="col-8 col-sm-6">
+            <button class="btn btn-secondary disabled btn-lg rounded" id="click-me" style="width: 50%">Click Me</button>
           </div>
         </div>
-    </div>    
+      </div>
+    </div>
+  </div>
+
+  <p>PRESS THE MOUSE BUTTON</p>
+  <script>
+
+    $("p")
+      .mouseup(function () {
+        $(this).append("<span style='color:#f00;'>Mouse up.</span>");
+      })
+      .mousedown(function () {
+        $(this).append("<span style='color:#00f;'>Mouse down.</span>");
+      });
+    
+    $(document).ready(function () {
+      var questions = [
+        {
+          title: "Commonly used data types DO NOT include:",
+          choices: ["strings", "booleans", "alerts", "numbers"],
+          answer: "alerts"
+        },
+        {
+          title: "The condition in an if / else statement is enclosed within ____.",
+          choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
+          answer: "parentheses"
+        },
+        ///etc.
+      ];
+
+      // Here we use jQuery to select the header with "click-me" as its ID.
+      // Notice I have the #click-me, click, and then the function
+      // So $("#id|.class|element").on("action", function(){});
+      // And so whenever it is clicked...
+      //start quiz
+      var counter = 0;
+      $("#startQuiz").on("mousedown", function () {
+        
+        if (counter < questions.length) {
+          questionsDiv.text(questions[counter].title);
+          counter = counter + 1 ;
+        }
+
+        // $.each(questions, function (index, question) {
+        //   questionsDiv.text(question.title);
+        //   console.log("questions are: " + questions[index].title);
+        // });
+
+      });
+      //test function
+      $("#click-me").on("click", function () {
+        alert("I've been clicked!");
+      });
+
+
+      // This line of jQuery selects the div with the matching id (#displayQuestion)
+      var questionsDiv = $("#displayQuestion");
+
+      // Here we loop through our array using the .each method and append a new div with each iteration
+      // $.each(questions, function(index, question) {
+      //   questionsDiv.append("<div>" + question.title + "</div>");
+      // });
+
+
+
+    });
+  </script>
 
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  
-  
+
+
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>

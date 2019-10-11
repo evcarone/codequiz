@@ -1,4 +1,36 @@
 
+var startQuizBtnEl = document.querySelector("#startQuiz");
+
+// var questions = [
+//     {
+//       title: "Commonly used data types DO NOT include:",
+//       choices: ["strings", "booleans", "alerts", "numbers"],
+//       answer: "alerts"
+//     },
+//     {
+//       title: "The condition in an if / else statement is enclosed within ____.",
+//       choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
+//       answer: "parentheses"
+//     },
+//     ///etc.
+//   ];
+
+//   startQuizBtnEl.addEventListener("click", function () {
+//     event.preventDefault();
+//     setTimeout(notifyTimeOut, 5000);
+//     askQuestion();
+//     console.log(questions);
+// });
+
+// function notifyTimeOut() {
+//     alert("time is up ");
+// };
+
+// function askQuestion() {
+//     alert("from array " + questions[1].title);
+// }
+
+
 
 
 
