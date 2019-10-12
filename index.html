@@ -23,6 +23,8 @@
           <div class="col-10 col-sm-8 mx-auto w-50 p-3 text-gray text-center border" id="displayQuestion">
             your quiz question and results
           </div>
+          <div class="col-10 col-sm-8 mx-auto w-50 p-3 text-gray text-center border" id="displayChoices">
+            your answers </div>
         </div>
       </div>
     </div>
@@ -41,17 +43,10 @@
     </div>
   </div>
 
-  <p>PRESS THE MOUSE BUTTON</p>
   <script>
 
-    $("p")
-      .mouseup(function () {
-        $(this).append("<span style='color:#f00;'>Mouse up.</span>");
-      })
-      .mousedown(function () {
-        $(this).append("<span style='color:#00f;'>Mouse down.</span>");
-      });
-    
+
+
     $(document).ready(function () {
       var questions = [
         {
@@ -72,28 +67,56 @@
       // So $("#id|.class|element").on("action", function(){});
       // And so whenever it is clicked...
       //start quiz
+
+      // This line of jQuery selects the div with the matching id (#displayQuestion)
+      var questionsDiv = $("#displayQuestion");
+      var choicesDiv = $("#displayChoices")
+
+      //set the counter for the loop and iterate through the array
       var counter = 0;
+
+
+      //on the mouse click display the question and choices; record the score based on answer and elapsed time
+      console.log("choices are: " + questions[1].title);
       $("#startQuiz").on("mousedown", function () {
-        
         if (counter < questions.length) {
           questionsDiv.text(questions[counter].title);
-          counter = counter + 1 ;
+          console.log("dropped into if statement and array length is " + questions.length)
+
+          for (i = 0; i < questions.length; i++) {
+            console.log("dropped into for loop and counter value is " + i);
+            console.log("choices are " + questions[i].choices)
+            console.log("choices length is " + questions[i].choices.length)
+            
+            for (j = 0; j < questions[i].choices.length; j++) {
+              console.log("inner index j value is " + j);
+              console.log("values for choice " + j + " is " + questions[i].choices[j])  
+            }
+            // console.log("choices are: " + questions.choices[i]);
+            // var choicesList = document.createElement("p");
+            // choicesList.textContent = questions[i].choices[i];
+            // // choicesDiv.appendChild(choicesList);
+            // choicesDiv.text(questions[i].choices[i]);
+          }
+
+          counter = counter + 1;
         }
-
-        // $.each(questions, function (index, question) {
-        //   questionsDiv.text(question.title);
-        //   console.log("questions are: " + questions[index].title);
-        // });
-
       });
+
+      //   for (i = 0; i < drinkList.length; i++) {
+      // var drinkEl = document.createElement("div")
+      // drinkEl.innerHTML = "<p>" + drinkList[i] + "<p>"
+      // drinkListEl.appendChild(drinkEl)
+
+      // };
+
       //test function
       $("#click-me").on("click", function () {
         alert("I've been clicked!");
       });
 
 
-      // This line of jQuery selects the div with the matching id (#displayQuestion)
-      var questionsDiv = $("#displayQuestion");
+
 
       // Here we loop through our array using the .each method and append a new div with each iteration
       // $.each(questions, function(index, question) {
@@ -103,6 +126,17 @@
 
 
     });
+
+// example working mouseup and mousedown for jquery
+// <p>PRESS THE MOUSE BUTTON</p>
+//     $("p")
+//       .mouseup(function () {
+//         $(this).append("<span style='color:#f00;'>Mouse up.</span>");
+//       })
+//       .mousedown(function () {
+//         $(this).append("<span style='color:#00f;'>Mouse down.</span>");
+//       });
+
   </script>
 
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
