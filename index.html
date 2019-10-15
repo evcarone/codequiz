@@ -44,12 +44,8 @@
   </div>
 
   <script>
-
-
-
     $(document).ready(function () {
-      var questions = [
-        {
+      var questions = [{
           title: "Commonly used data types DO NOT include:",
           choices: ["strings", "booleans", "alerts", "numbers"],
           answer: "alerts"
@@ -72,71 +68,40 @@
       var questionsDiv = $("#displayQuestion");
       var choicesDiv = $("#displayChoices")
 
-      //set the counter for the loop and iterate through the array
-      var counter = 0;
+      ///notes from 1-1 tutoring
 
+      // var answer_choice = '<div>' + questions[i].choices[j] + '</div>';
+      // choicesDiv.append(answer_choice);
 
-      //on the mouse click display the question and choices; record the score based on answer and elapsed time
-      console.log("choices are: " + questions[1].title);
-      $("#startQuiz").on("mousedown", function () {
-        if (counter < questions.length) {
-          questionsDiv.text(questions[counter].title);
-          console.log("dropped into if statement and array length is " + questions.length)
+      // //child delegation
+      // $('#displayChoices').on('click','div',function() {
+      //     console.log('yay');
+      // });
+      //starting state: diplays questions on click. correctly iterates the length of the array
+      //record of changes for troubleshooting:
+      //change the .on from mousedown to click (still works)
+      //print out choices with question on click
 
-          for (i = 0; i < questions.length; i++) {
-            console.log("dropped into for loop and counter value is " + i);
-            console.log("choices are " + questions[i].choices)
-            console.log("choices length is " + questions[i].choices.length)
-            
-            for (j = 0; j < questions[i].choices.length; j++) {
-              console.log("inner index j value is " + j);
-              console.log("values for choice " + j + " is " + questions[i].choices[j])  
-            }
-            // console.log("choices are: " + questions.choices[i]);
-            // var choicesList = document.createElement("p");
-            // choicesList.textContent = questions[i].choices[i];
-            // // choicesDiv.appendChild(choicesList);
-            // choicesDiv.text(questions[i].choices[i]);
-          }
-
-          counter = counter + 1;
+      var i = 0;
+      $("#startQuiz").on("click", function () {
+        if (i < questions.length) {
+          questionsDiv.text(questions[i].title);
+          var answer_choice1 = questions[i].choices[0];
+          choicesDiv.text(answer_choice1);
+          var answer_choice2 = "<div>" + questions[i].choices[1] + "<div>"
+          choicesDiv.append(answer_choice2);
+          var answer_choice3 = "<div>" + questions[i].choices[2] + "<div>"
+          choicesDiv.append(answer_choice3);
+          var answer_choice4 = "<div>" + questions[i].choices[3] + "<div>"
+          choicesDiv.append(answer_choice4);
         }
+        i = i + 1;
       });
-
-      //   for (i = 0; i < drinkList.length; i++) {
-      // var drinkEl = document.createElement("div")
-      // drinkEl.innerHTML = "<p>" + drinkList[i] + "<p>"
-      // drinkListEl.appendChild(drinkEl)
-
-      // };
-
       //test function
       $("#click-me").on("click", function () {
         alert("I've been clicked!");
       });
-
-
-
-
-      // Here we loop through our array using the .each method and append a new div with each iteration
-      // $.each(questions, function(index, question) {
-      //   questionsDiv.append("<div>" + question.title + "</div>");
-      // });
-
-
-
     });
-
-// example working mouseup and mousedown for jquery
-// <p>PRESS THE MOUSE BUTTON</p>
-//     $("p")
-//       .mouseup(function () {
-//         $(this).append("<span style='color:#f00;'>Mouse up.</span>");
-//       })
-//       .mousedown(function () {
-//         $(this).append("<span style='color:#00f;'>Mouse down.</span>");
-//       });
-
   </script>
 
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
