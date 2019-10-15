@@ -1,5 +1,5 @@
 
-var startQuizBtnEl = document.querySelector("#startQuiz");
+// var startQuizBtnEl = document.querySelector("#startQuiz");
 
 // var questions = [
 //     {

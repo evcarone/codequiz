@@ -35,7 +35,7 @@
             <button class="btn btn-danger btn-lg rounded" id="startQuiz" style="width: 50%">Start Quiz</button>
           </div>
           <div class="col-8 col-sm-6">
-            <button class="btn btn-secondary disabled btn-lg rounded" id="click-me" style="width: 50%">Click Me</button>
+
           </div>
         </div>
       </div>
@@ -54,14 +54,14 @@
           choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
           answer: "parentheses"
         },
+        {
+          title: "The question is the last one in the array ____.",
+          choices: ["uno", "dos", "tres", "quatro"],
+          answer: "tres"
+        },
         ///etc.
       ];
 
-      // Here we use jQuery to select the header with "click-me" as its ID.
-      // Notice I have the #click-me, click, and then the function
-      // So $("#id|.class|element").on("action", function(){});
-      // And so whenever it is clicked...
-      //start quiz
 
       // This line of jQuery selects the div with the matching id (#displayQuestion)
       var questionsDiv = $("#displayQuestion");
@@ -80,14 +80,46 @@
       //record of changes for troubleshooting:
       //change the .on from mousedown to click (still works)
       //print out choices with question on click
-      // $( ".hello" ).empty();
+      //log the value of the choice
+
 
       var i = 0;
-      $("#startQuiz").on("click", function () {
+      var answer_choice0 = "<div>" + questions[i].choices[0] + "<div>"
+      var answer_choice1 = "<div>" + questions[i].choices[1] + "<div>"
+      var answer_choice2 = "<div>" + questions[i].choices[2] + "<div>"
+      var answer_choice3 = "<div>" + questions[i].choices[3] + "<div>"
+
+      if (i === 0) {
+        questionsDiv.text(questions[i].title);
+        $("#displayChoices").empty();
+        console.log("value of i in the displayquestionfunction is " + i)
+
+        choicesDiv.append(answer_choice0);
+        choicesDiv.append(answer_choice1);
+        choicesDiv.append(answer_choice2);
+        choicesDiv.append(answer_choice3);
+        getAnswer();
+        i++;
+      } else {
+        if (i >= questions.length) {
+          console.log('Game Over')
+          return;
+
+        } else {
+          if (i > 0 && i < questions.length) {
+            console.log("middle")
+            displayQuestionAndAnswers();
+            getAnswer();
+            i++;
+          }
+        }
+      }
+
+      function displayQuestionAndAnswers() {
         if (i < questions.length) {
           questionsDiv.text(questions[i].title);
-
           $("#displayChoices").empty();
+          console.log("value of i in the displayquestionfunction is " + i)
           var answer_choice0 = "<div>" + questions[i].choices[0] + "<div>"
           choicesDiv.append(answer_choice0);
           var answer_choice1 = "<div>" + questions[i].choices[1] + "<div>"
@@ -97,16 +129,45 @@
           var answer_choice3 = "<div>" + questions[i].choices[3] + "<div>"
           choicesDiv.append(answer_choice3);
         }
-        i = i + 1;
-      });
-      $('#displayChoices').on('click', 'div', function () {
-        var text = $(this).text();
-        console.log(text);
-      });
-      //test function
-      // $("#click-me").on("click", function () {
-      //   alert("I've been clicked!");
-      // });
+      };
+
+      function getAnswer() {
+        $('#displayChoices').on('click', 'div', function () {
+            var userText = $(this).text();
+            console.log("the value of i  in the get answer function: " + i);
+            console.log("user clicked on: " + userText);
+            console.log("the value of this.text is " + $(this).text());
+            console.log("the answer is " + questions[i].answer);
+            // if (userText === $(this).text()) {
+            if (userText === questions[i].answer) {
+              var score = 0;
+              score = score + 10;
+              console.log("users score is " + score);
+            }
+          }
+          // });
+          // return(userText);
+        )
+      };
+
+      // console.log(userText);
+
+
+
+      // if (i < questions.length) {}{
+      //   $("#startQuiz").on("click", function () {
+      //     displayQuestionAndAnswers();
+      //     getAnswer();
+      //     i = i + 1;
+      //   })
+      // }
+
+      // if (userText === questions[i].answer) {
+      //   var score = 0;
+      //   score = score + 10;
+      //   console.log("users score is " + score);
+      // }
+
     });
   </script>
 
