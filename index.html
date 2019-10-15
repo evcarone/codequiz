@@ -21,9 +21,10 @@
         <hr />
         <div class="row">
           <div class="col-10 col-sm-8 mx-auto w-50 p-3 text-gray text-center border" id="displayQuestion">
-            your quiz question and results
+            your quiz question
           </div>
-          <div class="col-10 col-sm-8 mx-auto w-50 p-3 text-gray text-center border" id="displayChoices"></div>
+          <div class="col-10 col-sm-8 mx-auto w-50 p-3 text-gray text-center border" id="displayChoices">multiple choice
+            answer</div>
         </div>
       </div>
     </div>
@@ -44,131 +45,32 @@
 
   <script>
     $(document).ready(function () {
-      var questions = [{
-          title: "Commonly used data types DO NOT include:",
-          choices: ["strings", "booleans", "alerts", "numbers"],
-          answer: "alerts"
-        },
-        {
-          title: "The condition in an if / else statement is enclosed within ____.",
-          choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
-          answer: "parentheses"
-        },
-        {
-          title: "The question is the last one in the array ____.",
-          choices: ["uno", "dos", "tres", "quatro"],
-          answer: "tres"
-        },
-        ///etc.
-      ];
+          var questions = [{
+              title: "Commonly used data types DO NOT include:",
+              choices: ["strings", "booleans", "alerts", "numbers"],
+              answer: "alerts"
+            },
+            {
+              title: "The condition in an if / else statement is enclosed within ____.",
+              choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
+              answer: "parentheses"
+            },
+            {
+              title: "The question is the last one in the array ____.",
+              choices: ["uno", "dos", "tres", "quatro"],
+              answer: "tres"
+            },
+            ///etc.
+          ];
 
 
-      // This line of jQuery selects the div with the matching id (#displayQuestion)
-      var questionsDiv = $("#displayQuestion");
-      var choicesDiv = $("#displayChoices")
-
-      ///notes from 1-1 tutoring
-
-      // var answer_choice = '<div>' + questions[i].choices[j] + '</div>';
-      // choicesDiv.append(answer_choice);
-
-      // //child delegation
-      // $('#displayChoices').on('click','div',function() {
-      //     console.log('yay');
-      // });
-      //starting state: diplays questions on click. correctly iterates the length of the array
-      //record of changes for troubleshooting:
-      //change the .on from mousedown to click (still works)
-      //print out choices with question on click
-      //log the value of the choice
-
-
-      var i = 0;
-      var answer_choice0 = "<div>" + questions[i].choices[0] + "<div>"
-      var answer_choice1 = "<div>" + questions[i].choices[1] + "<div>"
-      var answer_choice2 = "<div>" + questions[i].choices[2] + "<div>"
-      var answer_choice3 = "<div>" + questions[i].choices[3] + "<div>"
-
-      if (i === 0) {
-        questionsDiv.text(questions[i].title);
-        $("#displayChoices").empty();
-        console.log("value of i in the displayquestionfunction is " + i)
-
-        choicesDiv.append(answer_choice0);
-        choicesDiv.append(answer_choice1);
-        choicesDiv.append(answer_choice2);
-        choicesDiv.append(answer_choice3);
-        getAnswer();
-        i++;
-      } else {
-        if (i >= questions.length) {
-          console.log('Game Over')
-          return;
-
-        } else {
-          if (i > 0 && i < questions.length) {
-            console.log("middle")
-            displayQuestionAndAnswers();
-            getAnswer();
-            i++;
-          }
-        }
-      }
-
-      function displayQuestionAndAnswers() {
-        if (i < questions.length) {
-          questionsDiv.text(questions[i].title);
-          $("#displayChoices").empty();
-          console.log("value of i in the displayquestionfunction is " + i)
-          var answer_choice0 = "<div>" + questions[i].choices[0] + "<div>"
-          choicesDiv.append(answer_choice0);
-          var answer_choice1 = "<div>" + questions[i].choices[1] + "<div>"
-          choicesDiv.append(answer_choice1);
-          var answer_choice2 = "<div>" + questions[i].choices[2] + "<div>"
-          choicesDiv.append(answer_choice2);
-          var answer_choice3 = "<div>" + questions[i].choices[3] + "<div>"
-          choicesDiv.append(answer_choice3);
-        }
-      };
-
-      function getAnswer() {
-        $('#displayChoices').on('click', 'div', function () {
-            var userText = $(this).text();
-            console.log("the value of i  in the get answer function: " + i);
-            console.log("user clicked on: " + userText);
-            console.log("the value of this.text is " + $(this).text());
-            console.log("the answer is " + questions[i].answer);
-            // if (userText === $(this).text()) {
-            if (userText === questions[i].answer) {
-              var score = 0;
-              score = score + 10;
-              console.log("users score is " + score);
-            }
-          }
-          // });
-          // return(userText);
-        )
-      };
-
-      // console.log(userText);
+          // This line of jQuery selects the div with the matching id (#displayQuestion)
+          var questionsDiv = $("#displayQuestion");
+          var choicesDiv = $("#displayChoices");
 
 
 
-      // if (i < questions.length) {}{
-      //   $("#startQuiz").on("click", function () {
-      //     displayQuestionAndAnswers();
-      //     getAnswer();
-      //     i = i + 1;
-      //   })
-      // }
-
-      // if (userText === questions[i].answer) {
-      //   var score = 0;
-      //   score = score + 10;
-      //   console.log("users score is " + score);
-      // }
-
-    });
+          
   </script>
 
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
