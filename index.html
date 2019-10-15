@@ -23,8 +23,7 @@
           <div class="col-10 col-sm-8 mx-auto w-50 p-3 text-gray text-center border" id="displayQuestion">
             your quiz question and results
           </div>
-          <div class="col-10 col-sm-8 mx-auto w-50 p-3 text-gray text-center border" id="displayChoices">
-            your answers </div>
+          <div class="col-10 col-sm-8 mx-auto w-50 p-3 text-gray text-center border" id="displayChoices"></div>
         </div>
       </div>
     </div>
@@ -81,26 +80,33 @@
       //record of changes for troubleshooting:
       //change the .on from mousedown to click (still works)
       //print out choices with question on click
+      // $( ".hello" ).empty();
 
       var i = 0;
       $("#startQuiz").on("click", function () {
         if (i < questions.length) {
           questionsDiv.text(questions[i].title);
-          var answer_choice1 = questions[i].choices[0];
-          choicesDiv.text(answer_choice1);
-          var answer_choice2 = "<div>" + questions[i].choices[1] + "<div>"
+
+          $("#displayChoices").empty();
+          var answer_choice0 = "<div>" + questions[i].choices[0] + "<div>"
+          choicesDiv.append(answer_choice0);
+          var answer_choice1 = "<div>" + questions[i].choices[1] + "<div>"
+          choicesDiv.append(answer_choice1);
+          var answer_choice2 = "<div>" + questions[i].choices[2] + "<div>"
           choicesDiv.append(answer_choice2);
-          var answer_choice3 = "<div>" + questions[i].choices[2] + "<div>"
+          var answer_choice3 = "<div>" + questions[i].choices[3] + "<div>"
           choicesDiv.append(answer_choice3);
-          var answer_choice4 = "<div>" + questions[i].choices[3] + "<div>"
-          choicesDiv.append(answer_choice4);
         }
         i = i + 1;
       });
-      //test function
-      $("#click-me").on("click", function () {
-        alert("I've been clicked!");
+      $('#displayChoices').on('click', 'div', function () {
+        var text = $(this).text();
+        console.log(text);
       });
+      //test function
+      // $("#click-me").on("click", function () {
+      //   alert("I've been clicked!");
+      // });
     });
   </script>
 
