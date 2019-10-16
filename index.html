@@ -103,28 +103,36 @@
         choicesDiv3.text(questions[i].choices[3]);
         });
 
+        if (i > 3) {
+        prompt("enter your initials ")
+        score = score + 50;
+        localStorage.setItem("myScore", score);
+      }
+        
+
         $('#displayChoices0').on('click', function () {
           var userText = $(this).text();
+          $(this).toggleClass('newColor');
           console.log("the value of userText is " + userText);
         });
         $('#displayChoices1').on('click', function () {
           var userText = $(this).text();
+          $(this).toggleClass('newColor');
           console.log("the value of userText is " + userText);
         });
         $('#displayChoices2').on('click', function () {
           var userText = $(this).text();
+          $(this).toggleClass('newColor');
           console.log("the value of userText is " + userText);
         });
         $('#displayChoices3').on('click', function () {
           var userText = $(this).text();
+          $(this).toggleClass('newColor');
           console.log("the value of userText is " + userText);
         });
 
-        if (i === 4) {
-        prompt("enter your initials ")
-        score = score + 50;
-        localStorage.setItem("myScore", score);
-      };
+        
+      
 
     });
   </script>
