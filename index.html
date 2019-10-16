@@ -23,10 +23,11 @@
           <div class="col-10 col-sm-8 mx-auto w-50 p-3 text-gray text-center border" id="displayQuestion">
             your quiz question
           </div>
-          <div class="col-10 col-sm-8 mx-auto w-50 p-3 text-gray text-center border" id="displayChoices0">multiple choice answer</div>
-          <div class="col-10 col-sm-8 mx-auto w-50 p-3 text-gray text-center border" id="displayChoices1">multiple choice answer</div>
-          <div class="col-10 col-sm-8 mx-auto w-50 p-3 text-gray text-center border" id="displayChoices2">multiple choice answer</div>
-          <div class="col-10 col-sm-8 mx-auto w-50 p-3 text-gray text-center border" id="displayChoices3">multiple choice answer</div>
+          <div class="col-10 col-sm-8 mx-auto w-50 p-3 text-gray text-center border" id="displayChoices0">multiple
+            choice [select one]</div>
+          <div class="col-10 col-sm-8 mx-auto w-50 p-3 text-gray text-center border" id="displayChoices1"></div>
+          <div class="col-10 col-sm-8 mx-auto w-50 p-3 text-gray text-center border" id="displayChoices2"></div>
+          <div class="col-10 col-sm-8 mx-auto w-50 p-3 text-gray text-center border" id="displayChoices3"></div>
         </div>
       </div>
     </div>
@@ -46,24 +47,6 @@
 
   <script>
     $(document).ready(function () {
-      // var questions = [{
-      //     title: "Commonly used data types DO NOT include:",
-      //     choices: ["strings", "booleans", "alerts", "numbers"],
-      //     answer: "alerts"
-      //   },
-      //   {
-      //     title: "The condition in an if / else statement is enclosed within ____.",
-      //     choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
-      //     answer: "parentheses"
-      //   },
-      //   {
-      //     title: "The question is the last one in the array ____.",
-      //     choices: ["uno", "dos", "tres", "quatro"],
-      //     answer: "tres"
-      //   },
-      //   ///etc.
-      // ];
-
 
       // This line of jQuery selects the div with the matching id (#displayQuestion)
       var questionsDiv = $("#displayQuestion");
@@ -71,40 +54,32 @@
       var choicesDiv1 = $("#displayChoices1");
       var choicesDiv2 = $("#displayChoices2");
       var choicesDiv3 = $("#displayChoices3");
-      var answer_choice0 = ''
-      var answer_choice1 = ''
-      var answer_choice2 = ''
-      var answer_choice3 = ''
-      var i = 0;
-      var score = 0;
-      var userInitials = '';
-
-  
-
+      var answer_choice0 = '';
+      var answer_choice1 = '';
+      var answer_choice2 = '';
+      var answer_choice3 = '';
+      var i = 3;
+      var totalScore = 56;
+      var userInitials = 'ES';
       var highScore = {
-      initals: "ES",
-      score: "0"
-    };
+        initals: "ES",
+        score: "0"
+      };
 
-      
-
-      console.log("score " + highScore.initals)
 
       $("#startQuiz").on("click", function () {
-        questionsDiv.text(questions[i].title);
-        choicesDiv0.text(questions[i].choices[0]);
-        choicesDiv1.text(questions[i].choices[1]);
-        choicesDiv2.text(questions[i].choices[2]);
-        choicesDiv3.text(questions[i].choices[3]);
-        });
-
-        if (i > 3) {
+        questionsDiv.text(questions[0].title);
+        choicesDiv0.text(questions[0].choices[0]);
+        choicesDiv1.text(questions[0].choices[1]);
+        choicesDiv2.text(questions[0].choices[2]);
+        choicesDiv3.text(questions[0].choices[3]);
+      });
+      
+      if (i > 2) {
         prompt("enter your initials ")
-        highScore.score = highScore.score + 90;
+        highScore.score = totalScore;
         localStorage.setItem("myScore", highScore.score);
-      }
-        
-
+      } else if (i < 3) {
         $('#displayChoices0').on('click', function () {
           var userText = $(this).text();
           $(this).toggleClass('newColor');
@@ -125,11 +100,8 @@
           $(this).toggleClass('newColor');
           console.log("the value of userText is " + userText);
         });
-
-        
-      
-
-    });
+      }
+    })
   </script>
 
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
