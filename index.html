@@ -79,21 +79,16 @@
       var score = 0;
       var userInitials = '';
 
-      var highScore = [50];
+  
 
-      // var highScore = [{
-      //     initals: "ES",
-      //     score: 20,
-      //   },
-      //   {
-      //     name: "ES",
-      //     score: 10,
-      //   }
-      // ]
+      var highScore = {
+      initals: "ES",
+      score: "0"
+    };
 
       
 
-      console.log("score " + highScore[0])
+      console.log("score " + highScore.initals)
 
       $("#startQuiz").on("click", function () {
         questionsDiv.text(questions[i].title);
@@ -105,8 +100,8 @@
 
         if (i > 3) {
         prompt("enter your initials ")
-        score = score + 50;
-        localStorage.setItem("myScore", score);
+        highScore.score = highScore.score + 90;
+        localStorage.setItem("myScore", highScore.score);
       }
         
 
